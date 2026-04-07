@@ -7,9 +7,19 @@ const client = new OpenAI({
 });
 
 async function ollamaPost(messages) {
+  let messagesWithSystemPrompt = [];
+
+  messagesWithSystemPrompt = [
+    {
+      role: "system",
+      content: "You are a helpful assistant.",
+    },
+    ...messages,
+  ];
+
   const response = await client.chat.completions.create({
     model: OLLAMA_MODEL,
-    messages,
+    messages: messagesWithSystemPrompt,
     max_tokens: 1000,
   });
 
