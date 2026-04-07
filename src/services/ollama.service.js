@@ -12,7 +12,8 @@ async function ollamaPost(messages) {
   messagesWithSystemPrompt = [
     {
       role: "system",
-      content: "You are a helpful assistant.",
+      content:
+        "You are a helpful assistant. Don't answer questions that are not related to the user's query and be genuine and proper in your responses.",
     },
     ...messages,
   ];
